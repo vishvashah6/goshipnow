@@ -1,0 +1,450 @@
+<div class="header">
+  <navbar></navbar>
+</div>
+<div class="height-div"></div>
+
+<section *ngIf="section1" class="shipment-sec">
+  <div class="container">
+    <h2 class="shipment-heading">ADD A SHIPMENT</h2>
+    <h6 class="shipment-step">Step 1 out of 5</h6>
+    <div class="nature-block">
+      <h4 class="nature-heading">NATURE OF PRODUCT</h4>
+      <ul class="list-inline nature-list">
+        <li><a>Refrigerated</a></li>
+        <li class="active"><a>Non-Refrigerated</a></li>
+      </ul>
+    </div>
+
+    <div class="categorie-block">
+      <h4 class="categorie-heading">CHOOSE CATEGORIES</h4>
+      <h6 class="categorie-sub-heading">You can select multiple categories</h6>
+      <div class="row">
+        <div class="col-sm-3 col-xs-6">
+          <div class="categorie-item">
+            <i class="categorie-icon categorie-icon1"></i>
+            <h6>Farm and Packed Food</h6>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <div class="categorie-item active">
+            <i class="categorie-icon categorie-icon2"></i>
+            <h6>Farm and Packed Food</h6>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <div class="categorie-item">
+            <i class="categorie-icon categorie-icon3"></i>
+            <h6>Farm and Packed Food</h6>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <div class="categorie-item">
+            <i class="categorie-icon categorie-icon4"></i>
+            <h6>Farm and Packed Food</h6>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <div class="categorie-item">
+            <i class="categorie-icon categorie-icon5"></i>
+            <h6>Farm and Packed Food</h6>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <div class="categorie-item">
+            <i class="categorie-icon categorie-icon6"></i>
+            <h6>Farm and Packed Food</h6>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <div class="categorie-item">
+            <i class="categorie-icon categorie-icon7"></i>
+            <h6>Farm and Packed Food</h6>
+          </div>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+          <div class="categorie-item">
+            <i class="categorie-icon categorie-icon8"></i>
+            <h6>Farm and Packed Food</h6>
+          </div>
+        </div>
+      </div>
+
+      <div class="categorie-btn">
+        <a (click)="showSection2()">Next <i class="arrow-icon"></i></a>
+      </div>
+
+    </div>
+
+
+  </div>
+</section>
+
+<section *ngIf="section2" class="shipment-sec shipment2-sec">
+  <div class="container">
+    <h2 class="shipment-heading">ADD A SHIPMENT</h2>
+    <h6 class="shipment-step">Step 2 out of 5</h6>
+  </div>
+  <div class="shipment-step-two clearfix">
+    <div class="map-details">
+      <form class="pickup-drop-block">
+        <h4>Your pickup and drop-off location</h4>
+        <div class="form-group pickup-drop-from">
+          <label for="pickupLocation" class="input-label sr-only">Pickup location</label>
+          <input id="pickupLocation" name="pickupLocation" type="text" class="form-control input-field" placeholder="Pickup location" ngx-google-places-autocomplete #placesRef1="ngx-places" (onAddressChange)="handleAddressChange1($event)" [(ngModel)]="shipment.pickupAddress">
+        </div>
+        <div class="form-group pickup-drop-from">
+          <label for="dropLocation" class="input-label sr-only">Drop-off location</label>
+          <input id="dropLocation" name="dropLocation" type="text" class="form-control input-field" placeholder="Drop-off location" ngx-google-places-autocomplete #placesRef2="ngx-places" (onAddressChange)="handleAddressChange2($event)" [(ngModel)]="shipment.deliveryAddress" >
+        </div>
+        <i class="pickup-icon"></i>
+      </form>
+
+      <form class="receiver-details">
+        <h4>Receiver’s Details</h4>
+        <div class="form-group receiver-from">
+          <label for="receiverName" class="input-label sr-only">Name</label>
+          <input id="receiverName" name="receiverName" type="text" class="form-control input-field" placeholder="Name" [(ngModel)]="shipment.receiverName" required>
+        </div>
+        <div class="form-group receiver-from">
+          <label for="receiverEmail" class="input-label sr-only">Email Address</label>
+          <input id="receiverEmail" name="receiverEmail" type="text" class="form-control input-field" placeholder="Email Address" [(ngModel)]="shipment.receiverEmail" required>
+        </div>
+        <div class="form-group receiver-from">
+          <label for="receiverPhone" class="input-label sr-only">Phone Number</label>
+          <input id="receiverPhone" name="receiverPhone" type="text" class="form-control input-field" placeholder="Phone Number" [(ngModel)]="shipment.receiverPhone" required>
+        </div>
+        <i class="pickup-icon"></i>
+      </form>
+
+
+      <div class="categorie-btn map-btn">
+        <a (click)="showSection3()">Next <i class="arrow-icon"></i></a>
+      </div>
+
+
+    </div>
+    <div class="shipment-map">
+      <agm-map style="height:100%;width:100%;"
+        [latitude]="lat"
+        [longitude]="lng"
+        [zoom]="5"
+        [disableDefaultUI]="false"
+        [zoomControl]="true">
+
+        <agm-direction [origin]="origin" [destination]="destination"></agm-direction>
+
+        <agm-marker *ngIf="pickupLocation" [latitude]="platitude"
+                    [longitude]="plongitude"
+                    [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'">
+        </agm-marker>
+
+        <agm-marker *ngIf="dropLocation" [latitude]="dlatitude"
+                    [longitude]="dlongitude"
+                    [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/red-dot.png'">
+        </agm-marker>
+      </agm-map>
+    </div>
+
+  </div>
+</section>
+
+<section *ngIf="section3" class="shipment-sec shipment3-sec">
+  <div class="container">
+    <h2 class="shipment-heading">ADD A SHIPMENT</h2>
+    <h6 class="shipment-step">Step 3 out of 5</h6>
+
+    <div class="details-shipment">
+      <h4>Details of the shipment</h4>
+      <p>Please enter the length, width, height, weight and quantity of each item you’re shipping.</p>
+    </div>
+
+    <div class="add-shipment-item">
+      <a class="add-item" data-toggle="modal" data-target="#myModal">Add Item <i class="add-item-btn"></i></a>
+      <div class="categorie-btn">
+        <a (click)="showSection4()" [ngClass]="{ 'disabled': shipmentItems.length == 0 }">Next <i class="arrow-icon"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="section4" class="shipment-sec shipment4-sec">
+  <div class="container">
+    <h2 class="shipment-heading">ADD A SHIPMENT</h2>
+    <h6 class="shipment-step">Step 4 out of 5</h6>
+
+    <div class="details-shipment">
+      <h4>Details of the shipment</h4>
+      <p>Please enter the length, width, height, weight and quantity of each item you’re shipping.</p>
+    </div>
+
+    <div class="add-shipment-item fan-block">
+      <div class="add-item clearfix" *ngFor='let item of shipmentItems'>
+        {{item.category}}
+        <span class="qty-block">Qty: {{item.count}}</span>
+        <a (click)="deleteShipmentItem(item)" class="delete-btn"></a>
+        <a (click)="editShipmentItemPopup(item)" data-toggle="modal" data-target="#myModal" class="edit-btn"></a>
+      </div>
+    </div>
+    <div class="add-shipment-item">
+      <a class="add-item" data-toggle="modal" data-target="#myModal">Add Item <i class="add-item-btn"></i></a>
+      <div class="categorie-btn">
+        <a (click)="showSection5()" [ngClass]="{ 'disabled': shipmentItems.length == 0 }" class="">Next <i class="arrow-icon"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="section5" class="shipment-sec shipment4-sec">
+  <div class="container">
+    <h2 class="shipment-heading">ADD A SHIPMENT</h2>
+    <h6 class="shipment-step">Step 5 out of 5</h6>
+
+    <div class="shipment-ready">
+      <h4>Your shipment is ready.</h4>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-8">
+
+        <div class="items-block">
+          <h6>Receiver’s Details</h6>
+          <div class="clearfix receiver-details">
+            <span class="pull-left">{{shipment.receiverName}}</span>
+            <span class="pull-left">{{shipment.receiverPhone}}</span>
+          </div>
+        </div>
+
+        <div class="items-block">
+          <h6>Items that you're shipping</h6>
+          <div class="add-shipment-item fan-block" *ngFor="let item of shipmentItems">
+            <div class="add-item clearfix">
+              {{item.category}}
+              <span class="qty-block">Qty: {{item.count}}</span>
+              <a (click)="deleteShipmentItem(item)" class="delete-btn"></a>
+              <a (click)="editShipmentItemPopup(item)" data-toggle="modal" data-target="#myModal" class="edit-btn"></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-4">
+
+        <div class="items-block">
+          <h6>PRICING <a class="question-mark"></a></h6>
+          <div class="price-details">
+            <ul class="list-inline">
+              <li class="price-list clearfix">
+                <span class="pull-left product-name">Subtotal</span>
+                <span class="pull-right product-price">{{shipment.cost | currency}}</span>
+              </li>
+              <li class="price-list clearfix">
+                <span class="pull-left product-name">Taxes</span>
+                <span class="pull-right product-price">$0</span>
+              </li>
+              <li class="total-block price-list clearfix">
+                <span class="pull-left product-name">Total</span>
+                <span class="pull-right product-price">{{shipment.cost | currency}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="shipment-location">
+          <agm-map style="height:100%;width:100%;"
+                   [latitude]="lat"
+                   [longitude]="lng"
+                   [zoom]="5"
+                   [disableDefaultUI]="false"
+                   [zoomControl]="true">
+
+            <agm-marker *ngIf="pickupLocation" [latitude]="platitude"
+                        [longitude]="plongitude"
+                        [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'">
+            </agm-marker>
+
+            <agm-marker *ngIf="dropLocation" [latitude]="dlatitude"
+                        [longitude]="dlongitude"
+                        [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/red-dot.png'">
+            </agm-marker>
+          </agm-map>
+        </div>
+        <div class="items-block location-block">
+          <h6>LOCATION</h6>
+          <div class="loctaion-details">
+            <i class="location-icon"></i>
+            <ul class="list-inline">
+              <li class="loctaion-list">
+                <span class="pickup-point">A. Pick-up point</span>
+                <span class="location-name">{{shipment.pickupAddress}}</span>
+              </li>
+              <li class="loctaion-list">
+                <span class="drop-point">B. Drop-off point</span>
+                <span class="location-name">{{shipment.deliveryAddress}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div><!--/row-->
+
+    <div class="location-btn">
+      <a [routerLink]="['/shipping']" class="location-save">Save and publish later</a>
+      <a (click)="openCheckout(shipment)" class="common-btn"><i class="publish-icon"></i>PUBLISH SHIPMENT</a>
+    </div>
+
+  </div>
+</section>
+
+<section *ngIf="section6" class="shipment-sec shipment4-sec">
+  <div class="container">
+    <h2 class="shipment-heading">ADD A SHIPMENT</h2>
+    <h6 class="shipment-step">Step 5 out of 5</h6>
+
+    <div class="shipment-ready">
+      <h4>Your shipment is ready.</h4>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-8">
+
+        <div class="items-block">
+          <h6>Receiver’s Details</h6>
+          <div class="clearfix receiver-details">
+            <span class="pull-left">{{shipment.receiverName}}</span>
+            <span class="pull-left">{{shipment.receiverPhone}}</span>
+          </div>
+        </div>
+
+        <div class="items-block">
+          <h6>Items that you're shipping</h6>
+          <div class="add-shipment-item fan-block" *ngFor="let item of shipmentItems">
+            <div class="add-item clearfix">
+              {{item.category}}
+              <span class="qty-block">Qty: {{item.count}}</span>
+              <!--<a (click)="deleteShipmentItem(item)" class="delete-btn"></a>-->
+              <!--<a (click)="editShipmentItemPopup(item)" data-toggle="modal" data-target="#myModal" class="edit-btn"></a>-->
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-4">
+
+        <div class="items-block">
+          <h6>PRICING <a class="question-mark"></a></h6>
+          <div class="price-details">
+            <ul class="list-inline">
+              <li class="price-list clearfix">
+                <span class="pull-left product-name">Subtotal</span>
+                <span class="pull-right product-price">{{shipment.cost | currency}}</span>
+              </li>
+              <li class="price-list clearfix">
+                <span class="pull-left product-name">Taxes</span>
+                <span class="pull-right product-price">$0</span>
+              </li>
+              <li class="total-block price-list clearfix">
+                <span class="pull-left product-name">Total</span>
+                <span class="pull-right product-price">{{shipment.cost | currency}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="shipment-location">
+          <agm-map style="height:100%;width:100%;"
+                   [latitude]="lat"
+                   [longitude]="lng"
+                   [zoom]="5"
+                   [disableDefaultUI]="false"
+                   [zoomControl]="true">
+
+            <agm-marker *ngIf="pickupLocation" [latitude]="platitude"
+                        [longitude]="plongitude"
+                        [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'">
+            </agm-marker>
+
+            <agm-marker *ngIf="dropLocation" [latitude]="dlatitude"
+                        [longitude]="dlongitude"
+                        [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/red-dot.png'">
+            </agm-marker>
+          </agm-map>
+        </div>
+        <div class="items-block location-block">
+          <h6>LOCATION</h6>
+          <div class="loctaion-details">
+            <i class="location-icon"></i>
+            <ul class="list-inline">
+              <li class="loctaion-list">
+                <span class="pickup-point">A. Pick-up point</span>
+                <span class="location-name">{{shipment.pickupAddress}}</span>
+              </li>
+              <li class="loctaion-list">
+                <span class="drop-point">B. Drop-off point</span>
+                <span class="location-name">{{shipment.deliveryAddress}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div><!--/row-->
+
+    <div class="location-btn">
+      <a [routerLink]="['/shipping']" class="common-btn">Close</a>
+      <!--<a (click)="openCheckout(shipment)" class="common-btn"><i class="publish-icon"></i>PUBLISH SHIPMENT</a>-->
+    </div>
+
+  </div>
+</section>
+
+<div id="myModal" class="modal fade shipment-popup" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" id="closeAdd">&times;</button>
+        <h4 class="modal-title">Enter Item Details</h4>
+      </div>
+      <div class="modal-body">
+        <form class="shipment-form clearfix">
+          <div class="form-group shipment-input">
+            <select id="category" class="shipment-select" [(ngModel)]='shipmentItem.category' name="category" placeholder="Item Category">
+              <option *ngFor='let option of categories' [value]="option.value" style="color: black">{{option.value}}</option>
+            </select>
+            <label for="category" class="input-label">Enter the Category of the item you’re shipping. i.e. Box</label>
+          </div>
+          <div class="form-group shipment-input">
+            <input type="text" name="weight" id="weight" [(ngModel)]="shipmentItem.weight" class="form-control input-field" placeholder="Weight (i.e. 155)">
+            <label for="weight" class="input-label">What is the weigth of the item in lbs</label>
+          </div>
+          <div class="clearfix"></div>
+          <div class="form-group shipment-input">
+            <input type="text" name="Length" id="length" [(ngModel)]="shipmentItem.length" class="form-control input-field" placeholder="Length">
+          </div>
+          <div class="form-group shipment-input">
+            <input type="text" name="width" id="width" [(ngModel)]="shipmentItem.width" class="form-control input-field" placeholder="Width">
+          </div>
+          <div class="clearfix"></div>
+          <div class="form-group shipment-input">
+            <input type="text" name="height" id="height" [(ngModel)]="shipmentItem.height" class="form-control input-field" placeholder="Height">
+          </div>
+          <div class="form-group shipment-input">
+            <input type="text" name="count" id="count" [(ngModel)]="shipmentItem.count" class="form-control input-field" placeholder="Quantity">
+          </div>
+          <div class="clearfix"></div>
+
+          <div class="shipment-popup-btn">
+            <a *ngIf="!this.shipmentItem.itemId" (click)="addShipmentItem()" class="common-btn">Add Item</a>
+            <a *ngIf="this.shipmentItem.itemId" (click)="editShipmentItem()" class="common-btn">Edit Item</a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer></footer>

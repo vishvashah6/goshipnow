@@ -1,0 +1,146 @@
+<div class="header aboutHeader">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" [routerLink]="['/']"><img src="../../assets/new/img/about-logo.png"></a>
+      </div>
+      <div class="responsive-block">
+        <ul class="list-inline">
+          <li class="resp-btn"><a [routerLink]="['/login']">Start Shipping</a></li>
+          <li class="toggle-btn">
+            <a href="javascript:void(0)">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li [routerLinkActive]="['active']"><a [routerLink]="['/contact']">Contact Us</a></li>
+          <li [routerLinkActive]="['active']"><a [routerLink]="['/getquote']">Get-a-Quote</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a [routerLink]="['/about']">About</a></li>
+          <li><a href="index.html#work">How it works</a></li>
+          <li><a [routerLink]="['/login']">Become a Trucker</a></li>
+          <li class="nav-btn"><a [routerLink]="['/login']">Start Shipping</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container -->
+  </nav>
+</div>
+<!--<div class="height-div"></div>-->
+<div class="aboutBanner">
+  <div class="container">
+    <div class="aboutTitle">
+      <div class="table-block">
+        <div class="table-inner">
+          <h2>About</h2>
+          <h4>Transparent, hassle free and affordable <br />shipping for your freight.</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="aboutContent">
+  <div class="aboutBlock">
+    <div class="aboutImage">
+      <div class="container">
+        <div class="aboutContent_inner">
+          <div class="table-block">
+            <div class="table-inner">
+              <p>America's trucking industry is a $749 billion sector in need of disruption.
+                GoShipNow eliminates the middlemen, connecting shippers directly with trucks.
+                This will save shippers 20 - 45% and put more money in the pocket of drivers.</p>
+            </div>
+          </div>
+        </div>
+        <div class="respAbout_img">
+          <img src="../../assets/new/img/about-img1.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="aboutBlock aboutSec">
+    <div class="aboutImage">
+      <div class="container">
+        <div class="aboutContent_inner">
+          <div class="table-block">
+            <div class="table-inner">
+              <p>Empty trucks account for 20 billion miles driven each year in the United States.
+                GoShipNow will utilize that empty space for shipping freight, making more money for drivers and further reducing the cost for shippers.</p>
+            </div>
+          </div>
+        </div>
+        <div class="respAbout_img">
+          <img src="../../assets/new/img/about-img2.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="aboutBlock aboutThird">
+    <div class="aboutImage">
+      <div class="container">
+        <div class="aboutContent_inner">
+          <div class="table-block">
+            <div class="table-inner">
+              <p>Often drivers find themselves waiting anywhere from 2 to 10 hours at the dock while warehouse workers load the truck. With our technology, we will provide the warehouse staff with real time arrival forecasts so that they have the freight ready to load once the truck arrives. These features will make everyone happier.</p>
+            </div>
+          </div>
+        </div>
+        <div class="respAbout_img">
+          <img src="../../assets/new/img/about-img3.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="f-inner">
+          <div class="footer-logo">
+            <a href="/"><img src="../../assets/new/img/footer-logo.png"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="copyright-text">Copyright 2017, GoShipNow Inc.</p>
+        </div>
+        <div class="col-sm-6">
+          <div class="footer_links">
+            <ul class="list-inline">
+              <li><a [routerLink]="['/about']">About</a></li>
+              <li><a [routerLink]="['/privacy-policy']">Privacy Policy</a></li>
+              <li><a [routerLink]="['/terms-service']">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<div class="sidebar">
+  <div class="container">
+    <ul class="list-unstyled">
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/contact']">Contact Us</a></li>
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/getquote']">Get-a-Quote</a></li>
+      <li class="active"><a [routerLink]="['/about']"> About </a></li>
+      <li><a href="index.html#work"> How it works </a></li>
+      <li><a [routerLink]="['/login']"> Become a Trucker </a></li>
+    </ul>
+  </div>
+</div>
+

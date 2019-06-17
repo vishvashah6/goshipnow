@@ -1,0 +1,205 @@
+﻿<navbarfront></navbarfront>
+<div class="height-div inner-pages-height"></div>
+<div class="signup-sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="signup-content">
+          <h2>Great to see you here!</h2>
+          <p>Create a GoShipNow account to start shipping.</p>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="signup-block">
+          <div class="graphic-box"></div>
+          <h2 class="signup-heading">Sign up</h2>
+          <div class="signup-tabs">
+            <ul class="list-inline">
+              <li class="trucker-block sign-tabs-inner" [ngClass]="{ 'active': truckRegister }">
+                <a (click)="truckRegistration()">
+                  <i class="trucker-icon"></i>
+                  <h6>Trucker</h6>
+                </a>
+              </li>
+              <li class="shipper-block sign-tabs-inner" [ngClass]="{ 'active': shipRegister }">
+                <a (click)="shipperRegistration()">
+                  <i class="shipper-icon"></i>
+                  <h6>Shipper</h6>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div *ngIf="shipRegister">
+            <div class="signup-user" id="userProfile">
+              <label style="cursor: pointer">
+                <input type="file" id="sfile"
+                       (change)="handleFileInput($event.target.files)" accept="image/*" required>
+                <a class="signup-user-img">
+                </a>
+              </label>
+            </div>
+            <form class="signup-form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group input-block"  [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                    <label for="susr" class="input-label">Name</label>
+                    <input type="text" class="form-control input-field" id="susr" name="name" [(ngModel)]="model.name" #name="ngModel" required/>
+                    <!--<div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>-->
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                    <label for="semail" class="input-label">Email</label>
+                    <input type="text" class="form-control input-field" id="semail" [(ngModel)]="model.email" #email="ngModel" name="email" required/>
+                    <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                    <label for="spassword" class="input-label">Password</label>
+                    <input type="password" class="form-control input-field" id="spassword" [(ngModel)]="model.password"
+                           #password="ngModel" required name="password"/>
+                    <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !city.valid }">
+                    <label for="scity" class="input-label">City</label>
+                    <input type="text" class="form-control input-field" id="scity" [(ngModel)]="model.city" name="city"
+                           #city="ngModel" required/>
+                    <div *ngIf="f.submitted && !city.valid" class="help-block">City is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block">
+                    <label for="sstate" class="input-label">State</label>
+                    <select id="sstate" class='form-control input-field' [(ngModel)]='model.state' name="state">
+                      <option class='option' *ngFor='let option of states' [value]="option.value" style="color: black">{{option.value}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block">
+                    <label for="scountry" class="input-label">Country</label>
+                    <select id="scountry" class='form-control input-field' [(ngModel)]='model.country' (ngModelChange)='onOptionsSelected($event)' name="country">
+                      <option class='option' *ngFor='let option of countries' [value]="option.key" style="color: black">{{option.value}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group checkbox-block">
+                    <input type="checkbox" style="opacity: 30 !important;" class="checkmark" [(ngModel)]="shipperCheck" name="check">
+                    <label class="ck-content">By clicking you agree to accept our <a [routerLink]="['/terms-service']">terms &  conditions</a>.
+                      <!--<input type="checkbox" checked="checked">-->
+                      <!--<span class="checkmark"></span>-->
+                    </label>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-6">
+                  <div class="signup-btn">
+                    <button type="submit" [disabled]="loading">set up MY account</button>
+                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-6">
+                  <div class="signin-block">
+                    <h5>Already a member? <a [routerLink]="['/login']"> Sign In here</a></h5>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div *ngIf="truckRegister">
+            <div class="signup-user" id="userProfile">
+              <label style="cursor: pointer">
+                <input type="file"
+                       (change)="handleFileInput($event.target.files)" accept="image/*" required>
+                <a class="signup-user-img">
+                </a>
+              </label>
+            </div>
+            <form class="signup-form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group input-block"  [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                    <label for="usr" class="input-label">Name</label>
+                    <input type="text" class="form-control input-field" name="name" id="usr" [(ngModel)]="model.name" #name="ngModel" required/>
+                    <div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                    <label for="email" class="input-label">Email</label>
+                    <input type="text" class="form-control input-field" name="email" id="email" [(ngModel)]="model.email" #email="ngModel" required/>
+                    <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                    <label for="password" class="input-label">Password</label>
+                    <input type="password" class="form-control input-field" name="password" id="password" [(ngModel)]="model.password"
+                           #password="ngModel" required/>
+                    <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !city.valid }">
+                    <label for="city" class="input-label">City</label>
+                    <input type="text" class="form-control input-field" name="city" id="city" [(ngModel)]="model.city"
+                           #city="ngModel" required/>
+                    <div *ngIf="f.submitted && !city.valid" class="help-block">City is required</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block">
+                    <label for="state" class="input-label">State</label>
+                    <select id="state" class='form-control input-field' [(ngModel)]='model.state' name="state">
+                      <option class='option' *ngFor='let option of states' [value]="option.value" style="color: black">{{option.value}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group input-block">
+                    <label for="country" class="input-label">Country</label>
+                    <select id="country" class='form-control input-field' [(ngModel)]='model.country' (ngModelChange)='onOptionsSelected($event)' name="country">
+                      <option class='option' *ngFor='let option of countries' [value]="option.key" style="color: black">{{option.value}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group checkbox-block">
+                    <input type="checkbox" style="opacity: 30 !important;" class="checkmark" [(ngModel)]="truckerCheck" name="check">
+                    <label class="ck-content">By clicking you agree to accept our <a [routerLink]="['/terms-service']">terms &  conditions</a>.
+                      <!--<input type="checkbox" >-->
+                      <!--<span class="checkmark"></span>-->
+                      <!--<input [(ngModel)]="checkboxValue" type="checkbox" name="onoffswitch" class="checkmark" id="myonoffswitch" checked>-->
+                    </label>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-6">
+                  <div class="signup-btn">
+                    <button type="submit" [disabled]="loading">set up MY account</button>
+                    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-6">
+                  <div class="signin-block">
+                    <h5>Already a member? <a [routerLink]="['/login']"> Sign In here</a></h5>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footerFront></footerFront>

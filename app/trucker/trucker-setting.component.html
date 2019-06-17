@@ -1,0 +1,136 @@
+<div class="header">
+  <navbarT></navbarT>
+</div>
+<div class="height-div"></div>
+<div class="main-banner1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <h3>Trucker Setting Page</h3>
+          <div class="row" style="margin-top:20px">
+            <accordion [showArrows]="true" [closeOthers]="false">
+              <accordion-group heading="Licence">
+                <div *ngIf="!isEditLicence">
+                  <div class="row">
+                    <button class="btn btn-success pull-right" (click)="togglelicence()">Edit</button>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label>Name</label>
+                      <label class="form-control">{{licence.authority}}</label>
+                    </div>
+                    <div class="col-lg-6">
+                      <label>Policy Number</label>
+                      <label class="form-control">{{licence.number}}</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label>Start Date</label>
+                      <label class="form-control">{{licence.issueDate * 1000 | date: 'mediumDate'}}</label>
+                    </div>
+                    <div class="col-lg-6">
+                      <label>End Date</label>
+                      <label class="form-control">{{licence.expireDate * 1000 | date: 'mediumDate'}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="isEditLicence">
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label for="iName">Authority</label>
+                      <input type="text" id="lName" name="iName" [(ngModel)]="licence.authority" class="form-control">
+                    </div>
+                    <div class="col-lg-6">
+                      <label for="lPolicyNumber">Number</label>
+                      <input type="text" id="lPolicyNumber" name="iPolicyNumber" [(ngModel)]="licence.number"
+                             class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label for="lIssueDate">Issue Date</label>
+                      <input type="date" id="lIssueDate" name="lIssueDate"
+                             [ngModel]="licence.issueDate * 1000 | date:'yyyy-MM-dd'" (ngModelChange)="licence.issueDate = $event"
+                             class="form-control">
+                    </div>
+                    <div class="col-lg-6">
+                      <label for="iExpireDate">Expire Date</label>
+                      <input type="date" id="iExpireDate" name="iExpireDate"
+                             [ngModel]="licence.expireDate * 1000 | date:'yyyy-MM-dd'" (ngModelChange)="licence.expireDate = $event"
+                             class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-warning" (click)="updatelicence()">Save</button>
+                    <button type="button" class="btn btn-primary" (click)="togglelicence()">Cancel</button>
+                  </div>
+                </div>
+              </accordion-group>
+              <accordion-group heading="Insurance">
+                <div *ngIf="!isEditInusurence">
+                  <div class="row">
+                    <button class="btn btn-success pull-right" (click)="toggleInsurance()">Edit</button>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label>Name</label>
+                      <label class="form-control">{{insurance.name}}</label>
+                    </div>
+                    <div class="col-lg-6">
+                      <label>Policy Number</label>
+                      <label class="form-control">{{insurance.policyNumber}}</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label>Start Date</label>
+                      <label class="form-control">{{insurance.startDate * 1000 | date: 'mediumDate'}}</label>
+                    </div>
+                    <div class="col-lg-6">
+                      <label>End Date</label>
+                      <label class="form-control">{{insurance.expireDate * 1000 | date: 'mediumDate'}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="isEditInusurence">
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label for="iName">Name</label>
+                      <input type="text" id="iName" name="iName" [(ngModel)]="insurance.name" class="form-control">
+                    </div>
+                    <div class="col-lg-6">
+                      <label for="iPolicyNumber">Policy Number</label>
+                      <input type="text" id="iPolicyNumber" name="iPolicyNumber" [(ngModel)]="insurance.policyNumber"
+                             class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-6">
+                      <label for="iStartDate">Start Date</label>
+                      <input type="date" id="iStartDate" name="iStartDate"
+                             [ngModel]="insurance.startDate * 1000 | date:'yyyy-MM-dd'" (ngModelChange)="insurance.startDate = $event"
+                             class="form-control">
+                    </div>
+                    <div class="col-lg-6">
+                      <label for="iEndDate">End Date</label>
+                      <input type="date" id="iEndDate" name="iEndDate"
+                             [ngModel]="insurance.expireDate * 1000 | date:'yyyy-MM-dd'" (ngModelChange)="insurance.expireDate = $event"
+                             class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" class="btn btn-warning" (click)="updateInsurance()">Save</button>
+                    <button type="button" class="btn btn-primary" (click)="toggleInsurance()">Cancel</button>
+                  </div>
+                </div>
+              </accordion-group>
+            </accordion>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

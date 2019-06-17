@@ -1,0 +1,73 @@
+<navbarfront></navbarfront>
+<div class="height-div inner-pages-height"></div>
+<div class="contact-sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7 col-md-6">
+        <div class="contact-block">
+          <h2>Contact Us</h2>
+          <p>For any questions and queries, please call/email on the details given below or fill the form and we’ll get back to you. We respond to queries as soon as possible.</p>
+          <div class="row contact-details">
+            <div class="col-xs-6">
+              <div class="contact-details-inner">
+                <h4>Contact</h4>
+                <h3>408-401-1050</h3>
+                <a href="tel:1-408-401-1050" class="contact-btn"><i class="phone-icon"></i>Call us</a>
+              </div>
+            </div>
+            <div class="col-xs-6 ">
+              <div class="contact-details-inner email-address">
+                <h4>Email Address</h4>
+                <h3><a href="mailto:info@goshipnow.com?Subject=Contact%20Us">info@goshipnow.com</a></h3>
+                <a href="mailto:info@goshipnow.com?Subject=Contact%20Us" class="contact-btn"><i class="mail-icon"></i>Send an email</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5 col-md-6">
+        <div class="contact-img">
+          <i></i>
+        </div>
+      </div>
+    </div>
+  </div><!--/container-->
+</div>
+
+<section class="contant-form-sec">
+  <div class="container">
+    <div class="contant-form-inner">
+      <span class="divider"></span>
+      <h4 class="form-head">Send a query</h4>
+      <form class="form-block" (ngSubmit)="sendContactDetail()">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Full Name*" name="name" [(ngModel)]="contacts.name">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Phone Number*" name="phone" [(ngModel)]="contacts.phone">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email*" name="email" [(ngModel)]="contacts.email">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label class="form-label">Message*</label>
+              <textarea type="text" class="form-control text-area" placeholder="Enter your message here*" name="message" [(ngModel)]="contacts.message"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="contact-send-btn"><i class="paper-plane"></i>Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer></footer>

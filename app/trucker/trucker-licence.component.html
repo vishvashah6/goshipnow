@@ -1,0 +1,58 @@
+<div class="header">
+  <navbarT></navbarT>
+</div>
+<div class="height-div logdin-div"></div>
+
+<section class="license-sec">
+  <div class="container">
+    <div class="license-head">
+      <h2>Add a License</h2>
+      <h4>A driver's license is required to accept shipments</h4>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-info">
+          <div class="panel-body">
+            <dropzone class="dropzone" [config]="config" [message]="'Click or drag images here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="license-form">
+          <div class="form-group license-input">
+            <label for="authority" class="input-label sr-only">Issuing Authority*</label>
+            <input type="text" id="authority" class="form-control input-field" placeholder="Issuing Authority*" [(ngModel)]="licence.authority">
+          </div>
+          <div class="form-group license-input">
+            <label for="licenceno" class="input-label sr-only">License Number</label>
+            <input type="text" id="licenceno" class="form-control input-field" placeholder="License Number" [(ngModel)]="licence.number">
+          </div>
+
+          <div class="form-group license-input">
+            <label for="issuedate1" >Valid From</label>
+            <input type="date" id="issuedate1" name="issuedate1"
+                   [ngModel]="licence.issueDate * 1000 | date:'yyyy-MM-dd'" (ngModelChange)="licence.issueDate = $event"
+                   class="form-control" max="2050-12-31">
+            <!--<input type="tel" id="issuedate" class="form-control" name="issuedate" placeholder="MM / YY" autocomplete="cc-exp" [(ngModel)]="licence.issueDate * 1000 | date: 'mediumDate'" required />-->
+          </div>
+          <div class="form-group license-input">
+            <label for="iExpireDate">Valid Till</label>
+            <input type="date" id="iExpireDate" name="iExpireDate"
+                   [ngModel]="licence.expireDate * 1000 | date:'yyyy-MM-dd'" (ngModelChange)="licence.expireDate = $event"
+                   class="form-control" max="2050-12-31">
+            <!--<input type="tel" id="expiredate" class="form-control" name="expiredate" placeholder="MM / YY" autocomplete="cc-exp" [(ngModel)]="licence.expireDate * 1000 | date: 'mediumDate'" required />-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="license-btn">
+      <a class="common-btn cancel-btn" (click)="togglelicence()">Cancel</a>
+      <a class="common-btn" (click)="updatelicence()">Save</a>
+
+    </div>
+  </div>
+</section>
+
+
+<footer></footer>

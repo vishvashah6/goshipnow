@@ -1,0 +1,124 @@
+<div class="header">
+  <navbar></navbar>
+</div>
+<div class="height-div logdin-div"></div>
+<section class="your-shipment-sec">
+  <div class="container">
+    <h2 class="your-shipment-title">Your Shipments</h2>
+    <button class="btn btn-primary" (click)="addShipment()">Add</button>
+    <ul class="list-inline shipment-process">
+      <li class="shipment-process-list" [ngClass]="{ 'active': isOpen }"><a (click)="openShip()">Open Shipments</a></li>
+      <li class="shipment-process-list" [ngClass]="{ 'active': isPending }"><a (click)="pendingShip()">Pending</a></li>
+      <li class="shipment-process-list" [ngClass]="{ 'active': isCompleted }"><a (click)="completedShip()">Completed</a>
+      </li>
+    </ul>
+    <div *ngIf="isOpen">
+      <div class="prosess-block" *ngFor="let item of openShippments" style="cursor: pointer"
+           (click)="editShipment(item)">
+        <div class="clearfix prosess-date">
+          <div class="estimated-block pull-left">Estimated Delivery: <span>Feb 18th, 2018</span></div>
+          <div class="estimated-block pull-right">Order Placed: {{item.createdAt * 1000 | date:'mediumDate'}}</div>
+        </div>
+
+        <div class="clearfix prosess-price">
+          <div class="item-details pull-left">
+            <h4>{{item.receiverName}}</h4>
+            <ul class="list-inline item-size">
+              <li>Email <span>{{item.receiverEmail}}</span></li>
+              <li>Phone <span>{{item.receiverPhone}}</span></li>
+            </ul>
+          </div>
+          <div class="item-price pull-right">{{item.cost | currency}}</div>
+        </div>
+        <div class="progress-block clearfix">
+          <div class="pull-left progress-line">
+            <span class="fill-line" style="width: 50%"></span>
+            <ul class="list-inline miles-block clearfix">
+              <li>{{item.pickupCity}}</li>
+              <li>{{item.deliveryCity}}</li>
+            </ul>
+          </div>
+          <div class="pull-right track-btn">
+            <a (click)="trackShip(item)">Track Shipment</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <section class="no-shipment-sec" *ngIf="noJobs">
+      <div class="container">
+        <div class="no-shipment-blcok">
+          <i class="no-shipment-icon"></i>
+          <h4>No shipments available</h4>
+          <p>We’re extremely sorry, there aren’t any shipments available now. Please check back later.</p>
+        </div>
+      </div>
+    </section>
+    <div *ngIf="isPending">
+      <div class="prosess-block" *ngFor="let item of pendingShippments" style="cursor: pointer"
+           (click)="editShipment(item)">
+        <div class="clearfix prosess-date">
+          <div class="estimated-block pull-left">Estimated Delivery: <span>Feb 18th, 2018</span></div>
+          <div class="estimated-block pull-right">Order Placed : {{item.createdAt * 1000 | date:'mediumDate'}}</div>
+        </div>
+
+        <div class="clearfix prosess-price">
+          <div class="item-details pull-left">
+            <h4>{{item.receiverName}}</h4>
+            <ul class="list-inline item-size">
+              <li>Email <span>{{item.receiverEmail}}</span></li>
+              <li>Phone <span>{{item.receiverPhone}}</span></li>
+            </ul>
+          </div>
+          <div class="item-price pull-right">{{item.cost | currency}}</div>
+        </div>
+        <div class="progress-block clearfix">
+          <div class="pull-left progress-line">
+            <span class="fill-line" style="width: 50%"></span>
+            <ul class="list-inline miles-block clearfix">
+              <li>{{item.pickupCity}}</li>
+              <li></li>
+              <li>{{item.deliveryCity}}</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div *ngIf="completedShippments">
+      <div class="prosess-block" *ngFor="let item of completedShippments" style="cursor: pointer"
+           (click)="editShipment(item)">
+        <div class="clearfix prosess-date">
+          <div class="estimated-block pull-left">Estimated Delivery: <span>Feb 18th, 2018</span></div>
+          <div class="estimated-block pull-right">Order Placed: {{item.createdAt * 1000 | date:'mediumDate'}}</div>
+        </div>
+
+        <div class="clearfix prosess-price">
+          <div class="item-details pull-left">
+            <h4>{{item.receiverName}}</h4>
+            <ul class="list-inline item-size">
+              <li>Email <span>{{item.receiverEmail}}</span></li>
+              <li>Phone <span>{{item.receiverPhone}}</span></li>
+            </ul>
+          </div>
+          <div class="item-price pull-right">{{item.cost | currency}}</div>
+        </div>
+        <div class="progress-block clearfix">
+          <div class="pull-left progress-line">
+            <span class="fill-line" style="width: 50%"></span>
+            <ul class="list-inline miles-block clearfix">
+              <li>{{item.pickupCity}}</li>
+              <li></li>
+              <li>{{item.deliveryCity}}</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer></footer>

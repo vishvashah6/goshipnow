@@ -1,0 +1,73 @@
+<div class="header">
+  <navbar></navbar>
+</div>
+<div class="height-div logdin-div"></div>
+<section class="shipment-sec shipment2-sec">
+  <div class="container">
+    <h2 class="shipment-heading">TRACK SHIPMENT</h2>
+    <h6 class="shipment-step">{{shipment.pickupAddress}} to {{shipment.deliveryAddress}}</h6>
+  </div>
+
+  <div class="shipment-step-two clearfix">
+    <div class="map-details">
+      <div class="miles-details">
+        <h4>232 miles left</h4>
+        <h6>Estimated delivery: 8 hours</h6>
+        <a class="call-btn">Call The Trucker</a>
+
+        <div class="shipment-user">
+          <span class="user-img"></span>
+          <div class="user-name">
+            <h4>Jonathan Schmidt</h4>
+            <h6>4.8</h6>
+          </div>
+        </div>
+
+
+
+        <div class="loctaion-details">
+          <i class="location-icon"></i>
+          <ul class="list-inline">
+            <li class="loctaion-list">
+              <span class="pickup-point">A. Pick-up point</span>
+              <span class="location-name">{{shipment.pickupAddress}}</span>
+            </li>
+            <li class="loctaion-list">
+              <span class="drop-point">B. Drop-off point</span>
+              <span class="location-name">{{shipment.deliveryAddress}}</span>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="shipment-details">
+          <a [routerLink]="['/add-shipping']">View Shipment Details</a>
+        </div>
+
+      </div>
+    </div>
+    <div class="shipment-map">
+      <agm-map style="height:100%;width:100%;"
+               [latitude]="lat"
+               [longitude]="lng"
+               [zoom]="5"
+               [disableDefaultUI]="false"
+               [zoomControl]="true">
+        <agm-direction [origin]="origin" [destination]="destination"></agm-direction>
+
+        <agm-marker [latitude]="platitude"
+                    [longitude]="plongitude"
+                    [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'">
+        </agm-marker>
+
+        <agm-marker [latitude]="dlatitude"
+                    [longitude]="dlongitude"
+                    [iconUrl]="'http://maps.google.com/mapfiles/ms/icons/red-dot.png'">
+        </agm-marker>
+
+      </agm-map>
+    </div>
+
+  </div>
+</section>
+<footer></footer>

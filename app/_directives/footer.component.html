@@ -1,0 +1,41 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-xs-12">
+        <div class="f-inner">
+          <div class="footer-logo">
+            <a href="77#"><img src="../../assets/new/img/footer-logo.png"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="copyright-text">Copyright {{currentYear}}, GoShipNow Inc.</p>
+        </div>
+        <div class="col-sm-6">
+          <div class="footer_links">
+            <ul class="list-inline">
+              <li><a [routerLink]="['/about']">About</a></li>
+              <li><a [routerLink]="['/privacy-policy']">Privacy Policy</a></li>
+              <li><a [routerLink]="['/terms-service']">Terms & Conditions</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="sidebar">
+  <div class="container">
+    <ul class="list-unstyled">
+      <li class="active"><a href="#trucker">Trucker</a></li>
+      <li><a href=""> Shipper </a></li>
+      <li><a [routerLink]="['/about']"> About </a></li>
+      <li><a [scrollTo]="'#work'" [scrollDuration]="1000" style="cursor: pointer" [scrollOffset]="-20"> How it works </a></li>
+      <li><a [routerLink]="['/login']"> Become a Trucker </a></li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<header class="header header_inner logdin">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" [routerLink]="['/']"><img src="../../assets/new/img/logo.png"></a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li [routerLinkActive]="['active']"><a [routerLink]="['/shipping']">Dashbord</a></li>
+          <li [routerLinkActive]="['active']" class="notification-icon"><a [routerLink]="['/notification']"><span></span></a></li>
+          <li class="dropdown user-block">
+            <a class="dropdown-toggle user_img" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <img src={{user.image}}>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu arrow_box">
+              <li [routerLinkActive]="['active']"><a [routerLink]="['/profile']"><i class="user_icon"></i>Profile</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a (click)="logout()" style="cursor:pointer;"><i class="signout-icon"></i>Sign Out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+      <ul class="nav navbar-nav navbar-right responsive-dashbord">
+        <li [routerLinkActive]="['active']"><a [routerLink]="['/shipping']">Dashbord</a></li>
+        <li [routerLinkActive]="['active']" class="notification-icon"><a [routerLink]="['/notification']"><span></span></a></li>
+
+        <li class="dropdown user-block">
+          <a class="dropdown-toggle user_img" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <img src={{user.image}}>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu arrow_box">
+            <li [routerLinkActive]="['active']"><a [routerLink]="['/profile']"><i class="user_icon"></i>Profile</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a (click)="logout()" style="cursor:pointer;"><i class="signout-icon"></i>Sign Out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+

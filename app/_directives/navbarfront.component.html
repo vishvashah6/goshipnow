@@ -1,0 +1,33 @@
+<div class="header">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" [scrollTo]="'#mainDiv'" [scrollDuration]="1000" style="cursor: pointer" [scrollOffset]="-20"><img src="../../assets/new/img/logo.png"></a>
+      </div>
+      <div class="responsive-block">
+        <ul class="list-inline">
+          <li class="resp-btn"><a [routerLink]="['/login']">Start Shipping</a></li>
+          <li class="toggle-btn">
+            <a href="javascript:void(0)">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li [routerLinkActive]="['active']"><a [routerLink]="['/contact']">Contact Us</a></li>
+          <li [routerLinkActive]="['active']"><a [routerLink]="['/getquote']">Get-a-Quote</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a [routerLink]="['/about']">About</a></li>
+          <li><a [scrollTo]="'#work'" [scrollDuration]="1000" style="cursor: pointer" [scrollOffset]="-20">How it works</a></li>
+          <li><a [routerLink]="['/login']">Become a Trucker</a></li>
+          <li class="nav-btn"><a [routerLink]="['/login']">Start Shipping</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container -->
+  </nav>
+</div>

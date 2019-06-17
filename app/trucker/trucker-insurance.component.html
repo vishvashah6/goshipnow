@@ -1,0 +1,56 @@
+<div class="header">
+  <navbarT></navbarT>
+</div>
+<div class="height-div logdin-div"></div>
+
+<section class="add-truck-sec">
+  <div class="container">
+    <div class="choose-truck insurance-file">
+      <div class="panel panel-info">
+          <div class="panel-body">
+            <!--<dropzone class="dropzone" [config]="config" [message]="'Click or drag images here to upload'" (error)="onUploadError($event)" (success)="handleFileInput($event.target.files)"></dropzone>-->
+            <div class="signup-user" id="userProfile">
+              <label style="cursor: pointer">
+                <input type="file"
+                       (change)="handleFileInput($event.target.files)" accept="image/*" required>
+                <a class="signup-user-img">
+                  <img class="signup-user-img" style="width: 100px; height: 100px;" src="{{insurance.image}}"/>
+                </a>
+              </label>
+            </div>
+          </div>
+      </div>
+
+      <form class="choose-truck-form clearfix">
+        <div class="form-group choose-truck-input">
+          <label for="name" class="input-label sr-only">Company Name*</label>
+          <input type="text" name="name" id="name" class="form-control input-field" placeholder="Company Name*" [(ngModel)]="insurance.name">
+        </div>
+        <div class="form-group choose-truck-input">
+          <label for="policyNumber" class="input-label sr-only">Policy Number*</label>
+          <input type="text" name="policyNumber" id="policyNumber" class="form-control input-field" placeholder="Policy Number*" [(ngModel)]="insurance.policyNumber">
+        </div>
+        <div class="form-group choose-truck-input">
+          <label for="startDate" class="input-label sr-only">Start Date*</label>
+          <input type="date" id="startDate" name="startDate"
+                 [ngModel]="insurance.startDate * 1000 | date:'yyyy-MM-dd'" (ngModelChange)="insurance.startDate = $event" class="form-control input-field" placeholder="Start Date*">
+        </div>
+        <div class="form-group choose-truck-input">
+          <label for="expireDate" class="input-label sr-only">Expire Date*</label>
+          <input type="date" id="expireDate" name="expireDate"
+                 [ngModel]="insurance.expireDate * 1000 | date:'yyyy-MM-dd'" (ngModelChange)="insurance.expireDate = $event" class="form-control input-field" placeholder="Expire Date*">
+        </div>
+      </form>
+      <div class="choose-truck-btn">
+        <a class="common-btn cancel-btn" style="cursor: pointer" (click)="toggleInsurance()">Cancel</a>
+        <a class="common-btn" style="cursor: pointer" (click)="updateInsurance()">Save</a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+
+
+<footer></footer>

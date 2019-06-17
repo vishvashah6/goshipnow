@@ -1,0 +1,177 @@
+<div class="header">
+  <navbarT></navbarT>
+</div>
+<div class="height-div logdin-div"></div>
+
+<section class="your-shipment-sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-offset-1 col-lg-10">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="clearfix new-truck">
+              <h2 class="your-shipment-title pull-left">Your Trucks</h2>
+              <a class="add-new-truck common-btn pull-right" (click)="addTruck()" >ADD A NEW TRUCK</a>
+            </div>
+            <div class="row">
+              <div class="col-sm-6" *ngFor="let truck of trucks">
+                <div class="new-truck-block">
+                  <h4>{{truck.name}}</h4>
+                  <h6>Registration Number</h6>
+                  <h5>{{truck.registration}}</h5>
+                  <a class="common-btn edit-details" (click)="editTruck(truck)">Edit Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer></footer>
+<!--<div class="height-div"></div>-->
+<!--<div class="main-banner1">-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-12">-->
+        <!--<div class="row">-->
+          <!--<div class="row">-->
+            <!--&lt;!&ndash;<button class="btn btn-primary btn-bg" data-title="Edit" data-toggle="modal" data-target="#edit"&ndash;&gt;-->
+                    <!--&lt;!&ndash;(click)="Add()">Add&ndash;&gt;-->
+            <!--&lt;!&ndash;</button>&ndash;&gt;-->
+            <!--<button class="btn btn-primary" [routerLink]="['/truck-add']">Add</button>-->
+          <!--</div>-->
+          <!--<div class="row" style="margin-top:20px">-->
+            <!--<table id="mytable" class="table table-bordred table-striped" *ngIf="trucks.length > 0">-->
+
+              <!--<thead>-->
+              <!--<th width="5%">Truck Type</th>-->
+              <!--<th width="20%">Latitude</th>-->
+              <!--<th width="20%">Longitude</th>-->
+              <!--<th width="20%">Name</th>-->
+              <!--<th width="20%">Registration</th>-->
+              <!--<th width="5%">Status</th>-->
+              <!--<th width="5%">Edit</th>-->
+              <!--<th width="5%">Delete</th>-->
+              <!--</thead>-->
+              <!--<tbody>-->
+
+              <!--<tr *ngFor="let item of trucks">-->
+                <!--<td width="5%">{{item.type}}</td>-->
+                <!--<td width="20%">{{item.latitude}}</td>-->
+                <!--<td width="20%">{{item.longitude}}</td>-->
+                <!--<td width="20%">{{item.name}}</td>-->
+                <!--<td width="20%">{{item.registration}}</td>-->
+                <!--<td width="5%"><label class="label label-info">{{item.status}}</label></td>-->
+                <!--<td width="5%">-->
+                  <!--<p data-placement="top" data-toggle="tooltip" title="Edit">-->
+                    <!--<button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"-->
+                            <!--(click)="Edit(item)">-->
+                      <!--Edit-->
+                    <!--</button>-->
+                  <!--</p>-->
+                <!--</td>-->
+                <!--<td width="5%">-->
+                  <!--<p data-placement="top" data-toggle="tooltip" title="X">-->
+                    <!--<button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"-->
+                            <!--(click)="remove(item)">-->
+                      <!--Delete-->
+                    <!--</button>-->
+                  <!--</p>-->
+                <!--</td>-->
+              <!--</tr>-->
+              <!--</tbody>-->
+
+            <!--</table>-->
+            <!--<div *ngIf="!(trucks.length > 0)">-->
+              <!--<h3>No truck is available. Please Add one.</h3>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--<div class="modal modal-fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">-->
+  <!--<div class="modal-dialog modal-lg">-->
+    <!--<div class="modal-content">-->
+      <!--<div class="modal-header">-->
+        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="closeAdd">X</button>-->
+        <!--<h4 class="modal-title custom_align" id="Headinga">{{isAdd ? 'Add' : 'Edit'}} Truck</h4>-->
+      <!--</div>-->
+      <!--<div class="modal-body">-->
+        <!--<form>-->
+          <!--<div class="form-group">-->
+            <!--<label>Van Type:</label>-->
+            <!--<label class="radio-inline"><input type="radio" name="optradio" value="Other"-->
+                                               <!--[(ngModel)]="truck.type">Other</label>-->
+            <!--<label class="radio-inline"><input type="radio" name="optradio" value="Van"-->
+                                               <!--[(ngModel)]="truck.type">Van</label>-->
+            <!--<label class="radio-inline"><input type="radio" name="optradio" value="flat_bed"-->
+                                               <!--[(ngModel)]="truck.type">Flat Bed</label>-->
+          <!--</div>-->
+          <!--<div class="form-group" *ngIf="isLoad">-->
+            <!--<div class="col-md-12">-->
+              <!--<label>Location</label>-->
+              <!--<agm-map-->
+                <!--[latitude]="pLat"-->
+                <!--[longitude]="pLng"-->
+                <!--[zoom]="zoom"-->
+                <!--[disableDefaultUI]="false"-->
+                <!--[zoomControl]="true"-->
+                <!--(mapClick)="pickupMapClick($event)">-->
+
+                <!--<agm-marker *ngIf='showMarker'-->
+                            <!--[latitude]="pLat"-->
+                            <!--[longitude]="pLng"-->
+                            <!--[markerDraggable]="draggable"-->
+                            <!--(dragEnd)="markerDragEnd($event)">-->
+                <!--</agm-marker>-->
+              <!--</agm-map>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group">-->
+            <!--<div class="col-lg-6">-->
+              <!--<label for="rName">Registration Number</label>-->
+              <!--<input type="text" id="rNumber" name="rNumber" [(ngModel)]="truck.registration" class="form-control">-->
+            <!--</div>-->
+            <!--<div class="col-lg-6">-->
+              <!--<label for="rName">Truck Name</label>-->
+              <!--<input type="text" id="rName" name="rName" [(ngModel)]="truck.name" class="form-control">-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<button type="button" class="btn btn-warning " style="margin-top: 20px" (click)="saveData()"> {{ isAdd ?-->
+            <!--'Save' : 'Update' }}-->
+          <!--</button>-->
+        <!--</form>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">-->
+  <!--<div class="modal-dialog">-->
+    <!--<div class="modal-content">-->
+      <!--<div class="modal-header">-->
+        <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true" id="deleteModal">X</button>-->
+        <!--<h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>-->
+      <!--</div>-->
+      <!--<div class="modal-body">-->
+
+        <!--<div>Are you sure you want-->
+          <!--to delete this Record?-->
+        <!--</div>-->
+
+      <!--</div>-->
+      <!--<div class="modal-footer ">-->
+        <!--<button type="button" class="btn btn-success" (click)="delete()">Yes</button>-->
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal"> No-->
+        <!--</button>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.modal-content &ndash;&gt;-->
+  <!--</div>-->
+  <!--&lt;!&ndash; /.modal-dialog &ndash;&gt;-->
+<!--</div>-->

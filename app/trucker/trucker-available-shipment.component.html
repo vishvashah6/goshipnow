@@ -1,0 +1,58 @@
+<div class="header">
+  <navbarT></navbarT>
+</div>
+<div class="height-div logdin-div">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+
+<section class="your-shipment-sec available-shipment-sec" *ngIf="!noJobs">
+  <div class="container">
+    <div class="clearfix new-truck">
+      <h2 class="your-shipment-title pull-left">Available Shipments</h2>
+      <!--<a href="#" class="filter-icon pull-right">Filter</a>-->
+    </div>
+    <div class="prosess-block" *ngFor="let item of data" (click)="detailPage(item)" style="cursor: pointer">
+      <div class="clearfix prosess-date">
+        <div class="estimated-block pull-left">{{item.created * 1000 | date:'yyyy-MM-dd'}}</div>
+      </div>
+      <div class="clearfix prosess-price">
+        <div class="item-details pull-left">
+          <!--<a class="item-details-title">Automobile (SUV), wood logs x 19, miscellaneous items</a>-->
+          <!--<ul class="list-inline item-size">-->
+            <!--<li>L <span>14</span></li>-->
+            <!--<li>B <span>4</span></li>-->
+            <!--<li>H <span>6 inches</span></li>-->
+          <!--</ul>-->
+        </div>
+        <div class="item-price pull-right">{{item.price | currency}}</div>
+      </div>
+      <div class="progress-block clearfix">
+        <div class="pull-left progress-line finish-line">
+          <span class="fill-line"></span>
+          <ul class="list-inline miles-block clearfix">
+            <li>{{item.pickup}}</li>
+            <li>30 miles left</li>
+            <li>{{item.delivery}}</li>
+          </ul>
+        </div>
+        <div class="pull-right track-btn">
+          <a (click)="acceptJob()">Accept Shipment</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="no-shipment-sec" *ngIf="noJobs">
+  <div class="container">
+    <div class="no-shipment-blcok">
+      <i class="no-shipment-icon"></i>
+      <h4>No shipments available</h4>
+      <p>We’re extremely sorry, there aren’t any shipments available now. Please check back later.</p>
+    </div>
+  </div>
+</section>
+
+
+<footer></footer>
+

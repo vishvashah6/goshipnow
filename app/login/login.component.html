@@ -1,0 +1,54 @@
+﻿<navbarfront></navbarfront>
+
+<div class="height-div inner-pages-height"></div>
+<div class="signup-sec login-sec">
+  <div class="container">
+    <div class="signup-block login-block">
+      <div class="graphic-box"></div>
+      <h2 class="signup-heading">Login</h2>
+      <div class="">
+        <form class="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                <label for="email" class="input-label">Email address</label>
+                <input type="text" class="form-control input-field" id="email" name="username" [(ngModel)]="model.username"
+                       #username="ngModel" required>
+                <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                <label for="password" class="input-label">Password</label>
+                <input type="password" class="form-control input-field" id="password" name="password" [(ngModel)]="model.password"
+                       #password="ngModel" required>
+                <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-12">
+              <div class="signup-btn">
+                <button type="submit">Log in</button>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-xs-8">
+              <div class="signin-block signup_block">
+                <h5>New to goshipnow.com? <a [routerLink]="['/register']"> Sign Up here</a></h5>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="signin-block forgot-block">
+                <h5><a [routerLink]="['/forget']">Forgot password</a></h5>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div><!--/container-->
+</div>
+
+
+
+<footerFront></footerFront>

@@ -1,0 +1,43 @@
+<navbarfront></navbarfront>
+<div class="height-div inner-pages-height"></div>
+<div class="signup-sec login-sec">
+  <div class="container">
+    <div class="signup-block login-block">
+      <div class="graphic-box"></div>
+      <h2 class="signup-heading">Forgot your password?</h2>
+      <p class="forgot_subtitle">No problem! Enter your email address below and we’ll send you the instructions to get a new one.</p>
+      <div class="">
+        <form class="signup-form" #f="ngForm" (ngSubmit)="f.form.valid && sendMail()">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                <label for="email" class="input-label">Email address</label>
+                <input type="text" class="form-control input-field" id="email" name="username" [(ngModel)]="user.email"
+                       #username="ngModel" required>
+                <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-sm-12">
+              <div class="signup-btn">
+                <button type="submit">Continue</button>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-sm-8">
+              <div class="signin-block signup_block">
+                <h5>Back to  <a [routerLink]="['/login']"> login page</a></h5>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div><!--/container-->
+</div>
+
+<footerFront></footerFront>
+
+

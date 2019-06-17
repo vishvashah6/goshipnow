@@ -1,0 +1,84 @@
+<div class="header">
+  <navbarT></navbarT>
+</div>
+<div class="height-div logdin-div"></div>
+<section class="your-shipment-sec gsn-trucker">
+  <div class="container">
+    <div class="clearfix new-truck">
+      <h2 class="your-shipment-title pull-left">Your Shipments</h2>
+      <!--<a href="#" class="add-new-truck common-btn pull-right">Create a new shipment</a>-->
+    </div>
+    <ul class="list-inline shipment-process">
+      <li style="cursor: pointer" class="shipment-process-list" [ngClass]="{ 'active': isCompleted }"><a (click)="completedShip()">Completed</a>
+      <li style="cursor: pointer" class="shipment-process-list" [ngClass]="{ 'active': !isCompleted }"><a (click)="cancelledShip()">Cancelled</a>
+    </ul>
+    <div *ngIf="isCompleted">
+    <div *ngFor="let j of completedJobs" class="prosess-block">
+      <div class="clearfix prosess-date">
+        <div class="estimated-block pull-right">Order Placed: {{j.created * 1000 | date:'yyyy-MM-dd'}} </div>
+      </div>
+
+      <div class="clearfix prosess-price">
+        <!--<div class="item-details pull-left">-->
+          <!--<a href="#" class="item-details-title">Automobile (SUV), wood logs x 19, miscellaneous items</a>-->
+          <!--<ul class="list-inline item-size">-->
+            <!--<li>L <span>14</span></li>-->
+            <!--<li>B <span>4</span></li>-->
+            <!--<li>H <span>6 inches</span></li>-->
+          <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="item-price pull-right">{{j.price | currency}}</div>-->
+      </div>
+      <div class="progress-block clearfix">
+        <div class="pull-left progress-line">
+          <span class="fill-line" style="width: 50%"></span>
+          <ul class="list-inline miles-block clearfix">
+            <li>{{j.pickupCity}}</li>
+            <li>0 miles left</li>
+            <li>{{j.deliveryState}}</li>
+          </ul>
+        </div>
+        <!--<div class="pull-right track-btn">-->
+          <!--<a href="#">Update Status</a>-->
+          <!--<a href="#" class="view-details-btn">View Details</a>-->
+        <!--</div>-->
+      </div>
+
+    </div>
+    </div>
+    <div *ngIf="!isCompleted">
+    <div *ngFor="let j of cancelledJobs" class="prosess-block">
+      <div class="clearfix prosess-date">
+        <div class="estimated-block pull-right">Order Placed: {{j.created * 1000 | date:'yyyy-MM-dd'}} </div>
+      </div>
+
+      <div class="clearfix prosess-price">
+        <!--<div class="item-details pull-left">-->
+        <!--<a href="#" class="item-details-title">Automobile (SUV), wood logs x 19, miscellaneous items</a>-->
+        <!--<ul class="list-inline item-size">-->
+        <!--<li>L <span>14</span></li>-->
+        <!--<li>B <span>4</span></li>-->
+        <!--<li>H <span>6 inches</span></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="item-price pull-right">{{j.price | currency}}</div>-->
+      </div>
+      <div class="progress-block clearfix">
+        <div class="pull-left progress-line">
+          <span class="fill-line" style="width: 50%"></span>
+          <ul class="list-inline miles-block clearfix">
+            <li>{{j.pickupCity}}</li>
+            <li>0 miles left</li>
+            <li>{{j.deliveryCity}}</li>
+          </ul>
+        </div>
+        <!--<div class="pull-right track-btn">-->
+        <!--<a href="#">Update Status</a>-->
+        <!--<a href="#" class="view-details-btn">View Details</a>-->
+        <!--</div>-->
+      </div>
+
+    </div>
+    </div>
+  </div>
+</section>

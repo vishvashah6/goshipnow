@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <title>GoShipNow</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="assets/new/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/new/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/new/css/animate.css">
+  <link rel="stylesheet" href="assets/new/css/defult.css">
+  <link rel="stylesheet" href="assets/new/css/style.css">
+  <link rel="stylesheet" href="assets/new/css/responsive.css">
+  <link rel="stylesheet" href="assets/new/css/custom.css">
+  <link rel="stylesheet" href="assets/toastr/toastr.css">
+
+</head>
+<body>
+    <app>Loading...</app>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/new/js/bootstrap.min.js"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBACbcQmVK1bXTnIGZVCPewFGWLP9j1fWU&libraries=places&sensor=false&language=en"></script>
+    <script>
+      var checkitem = function() {
+        var $this;
+        $this = $("#carousel-example-generic");
+        if ($("#carousel-example-generic .carousel-inner .item:first").hasClass("active")) {
+          $this.children(".left").hide();
+          $this.children(".right").show();
+        } else if ($("#carousel-example-generic .carousel-inner .item:last").hasClass("active")) {
+          $this.children(".right").hide();
+          $this.children(".left").show();
+        } else {
+          $this.children(".carousel-control").show();
+        }
+      };
+
+      checkitem();
+
+      $("#carousel-example-generic").on("slid.bs.carousel", "", checkitem);
+    </script>
+    <script>
+      $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 50) {
+          $(".header").addClass("fixed");
+        } else {
+          $(".header").removeClass("fixed");
+        }
+      });
+    </script>
+    <script>
+      $( document ).ready(function() {
+        $('.get-app-btn, .banner-content a, .navbar-nav a').bind('click',function(event){
+          var $anchor = $(this);
+          // $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top -40}, 600,'swing');
+          event.preventDefault();
+        });
+      });
+    </script>
+    <script>
+      $(document).on("click", ".toggle-btn a", function() {
+        if ($(this).parent().hasClass("show-bar")) {
+          $(".sidebar, .toggle-btn").removeClass("show-bar");
+          $("body").removeClass("noScroll");
+          $("body").height("auto");
+        } else {
+          $(".sidebar, .toggle-btn").addClass("show-bar");
+          $("body").addClass("noScroll");
+          $("body").height($(window).height());
+        }
+      });
+    </script>
+    <script type="text/javascript">var num_items = $("#hiw_carousel").find(".item").length;
+var to_index = 4;
+var current_index = 0;
+
+function toDisable() {
+            if (current_index === 0) {
+                $("#hiw_back_btn").addClass("disable");
+            } else if (current_index === to_index) {
+                $("#hiw_next_btn").addClass("disable");
+            } else {
+                $("#hiw_carousel .carousel-control").removeClass("disable");
+            }
+}
+
+$(document).ready(function() {
+            $(document).on("click", "#hiw_back_btn", function(e) {
+                e.preventDefault();
+                if (current_index != 0) {
+                    $("#hiw_carousel").find(".item").removeClass("active");
+                    $("#hiw_carousel").find(".item").eq(current_index - 1).addClass("active");
+                    current_index = current_index - 1;
+                    console.log(current_index);
+
+                    toDisable();
+                }
+            })
+            $(document).on("click", "#hiw_next_btn", function(e) {
+                e.preventDefault();
+                console.log("click working");
+                console.log(current_index != to_index);
+                if (current_index != to_index) {
+                    console.log("if working");
+                    $("#hiw_carousel").find(".item").removeClass("active");
+                    $("#hiw_carousel").find(".item").eq(current_index + 1).addClass("active");
+                    current_index = current_index + 1;
+                    console.log(current_index);
+
+                    toDisable();
+                }
+            })
+})</script>
+
+</body>
+</html>

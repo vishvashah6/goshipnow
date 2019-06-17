@@ -1,0 +1,129 @@
+<navbar *ngIf="isShipper"></navbar>
+<navbarT *ngIf="!isShipper"></navbarT>
+<div class="height-div logdin-div">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+<div class="height-div inner-pages-height"></div>
+<div class="signup-sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="signup-block">
+          <div class="graphic-box"></div>
+          <h2 class="signup-heading">Profile</h2>
+          <div class="signup-tabs">
+            <ul class="list-inline">
+            </ul>
+          </div>
+
+          <div class="">
+            <div class="signup-user" id="userProfile">
+              <label style="cursor: pointer">
+                <input type="file"
+                       (change)="handleFileInput($event.target.files)" accept="image/*" required>
+                <a class="signup-user-img">
+                  <img class="signup-user-img" src="{{user.profile.image}}"/>
+                </a>
+              </label>
+            </div>
+            <div class="signup-user">
+              <!--<a class="signup-user-img">-->
+                <!--<img class="signup-user-img" src="{{target ?  target : '../assets/img/no-image-icon-md.png'}}"/>-->
+              <!--</a>-->
+              <!--<input type="file"-->
+                     <!--id="file"-->
+                     <!--(change)="handleFileInput($event.target.files)" accept="image/*" required>-->
+              <form (ngSubmit)="updateProfile()" class="signup-form" #f="ngForm" novalidate>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !name.valid }">
+                      <label for="usr" class="input-label">Name</label>
+                      <input type="text" class="form-control input-field" id="usr" name="name"
+                             [(ngModel)]="user.profile.name" #name="ngModel" required/>
+                      <div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                      <label for="email" class="input-label">Email address</label>
+                      <input type="text" class="form-control input-field" id="email" name="email"
+                             [(ngModel)]="user.profile.email" #email="ngModel" required/>
+                      <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-block">
+                      <label for="phone" class="input-label">Phone</label>
+                      <input type="text" class="form-control input-field" id="phone" name="phone"
+                             [(ngModel)]="user.profile.phone"
+                             #phone="ngModel"/>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !address1.valid }">
+                      <label for="address1" class="input-label">Address 1</label>
+                      <input type="text" class="form-control input-field" id="address1" name="address1"
+                             [(ngModel)]="user.profile.address1"
+                             #address1="ngModel" required/>
+                      <div *ngIf="f.submitted && !address1.valid" class="help-block">Address is required</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-block">
+                      <label for="address2" class="input-label">Address 2</label>
+                      <input type="text" class="form-control input-field" id="address2" name="address2"
+                             [(ngModel)]="user.profile.address2"
+                             #address2="ngModel"/>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !zipcode.valid }">
+                      <label for="zipcode" class="input-label">Zip Code</label>
+                      <input type="text" class="form-control input-field" id="zipcode" name="zip"
+                             [(ngModel)]="user.profile.zip"
+                             #zipcode="ngModel" required/>
+                      <div *ngIf="f.submitted && !zipcode.valid" class="help-block">Zip Code is required</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-block" [ngClass]="{ 'has-error': f.submitted && !city.valid }">
+                      <label for="city" class="input-label">City</label>
+                      <input type="text" class="form-control input-field" id="city" name="city"
+                             [(ngModel)]="user.profile.city"
+                             #city="ngModel" required/>
+                      <div *ngIf="f.submitted && !city.valid" class="help-block">City is required</div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-block">
+                      <label for="state" class="input-label">State</label>
+                      <select id="state" class='form-control input-field' [(ngModel)]='user.profile.state' name="state">
+                        <option class='option' *ngFor='let option of states' [value]="option.value" style="color: black">{{option.value}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group input-block">
+                      <label for="country" class="input-label">Country</label>
+                      <select id="country" class='form-control input-field' [(ngModel)]='user.profile.country' (ngModelChange)='onOptionsSelected($event)' name="country">
+                        <option class='option' *ngFor='let option of countries' [value]="option.key" style="color: black">{{option.value}}</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="clearfix"></div>
+                  <div class="col-sm-6">
+                    <div class="signup-btn">
+                      <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer></footer>

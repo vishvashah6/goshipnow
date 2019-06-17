@@ -1,0 +1,262 @@
+<navbarfront></navbarfront>
+<div *ngIf="!successQuote">
+  <div class="height-div inner-pages-height">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  </div>
+  <div class="contact-sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="contact-block quote-block">
+            <h2>Get A Quote</h2>
+            <h4>Shipping freight.</h4>
+            <ul class="list-inline">
+              <li>Easier.</li>
+              <li>Faster.</li>
+              <li>Cheaper.</li>
+            </ul>
+
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="quote-vector">
+            <i></i>
+          </div>
+        </div>
+      </div>
+    </div><!--/container-->
+  </div>
+
+  <section class="contant-form-sec quote-sec">
+    <div class="container">
+      <div class="contant-form-inner">
+        <form class="form-block">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Full Name*" [(ngModel)]="quote.name" name="name">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Phone Number*" [(ngModel)]="quote.phone"
+                       name="phone">
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Email address*" [(ngModel)]="quote.email"
+                       name="email">
+              </div>
+            </div>
+            <div class="col-sm-6">
+            <div class="form-group">
+            <label class="form-label">Pickup Date</label>
+            <input type="date" class="form-control" [(ngModel)]="quote.pickup_at" name="pickup_at">
+            </div>
+            </div>
+            <div class="col-sm-6">
+            <div class="form-group">
+            <label class="form-label">Dropoff Date</label>
+            <input type="date" class="form-control" [(ngModel)]="quote.delivery_at" name="delivery_at">
+            </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label class="form-label">Pickup Address*</label>
+                <input type="text" class="form-control" placeholder="Enter your pickup address"
+                       [(ngModel)]="quote.pickup_address" name="pickup_address">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="City" [(ngModel)]="quote.pickup_city"
+                       name="pickup_city">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <select id="state" class='form-control select-btn' [(ngModel)]='quote.pickup_state' name="pickup_state">
+                  <option class='option' *ngFor='let option of states' [value]="option.value" style="color: black">{{option.value}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Postal/zip code" [(ngModel)]="quote.pickup_zip"
+                       name="pickup_zip">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <select id="country" class="form-control select-btn" [(ngModel)]='quote.pickup_country' (ngModelChange)='onOptionsSelected($event)' name="pickup_country">
+                  <option class='option' *ngFor='let option of countries' [value]="option.key" style="color: black">{{option.value}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label class="form-label">Delivery Address*</label>
+                <input type="text" class="form-control" placeholder="Enter your delivery address"
+                       [(ngModel)]='quote.delivery_address' name="delivery_address">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="City" [(ngModel)]='quote.delivery_city'
+                       name="delivery_city">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <select id="delivery_state" class='form-control select-btn' [(ngModel)]='quote.delivery_state' name="delivery_state">
+                  <option class='option' *ngFor='let option of states' [value]="option.value" style="color: black">{{option.value}}</option>
+                </select>
+                <!--<input type="text" class="form-control" placeholder="State" [(ngModel)]='quote.delivery_state'-->
+                <!--name="delivery_state">-->
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Postal/zip code" [(ngModel)]='quote.delivery_zip'
+                       name="delivery_zip">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <select class="form-control select-btn" [(ngModel)]='quote.delivery_country' (ngModelChange)='onOptionsSelected($event)' name="delivery_country">
+                  <option class='option' *ngFor='let option of countries' [value]="option.key" style="color: black">
+                    {{option.value}}
+                  </option>
+                </select>
+
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+            <div class="form-group">
+            <label class="form-label">Dimensions</label>
+            <!--<input type="text" class="form-control" placeholder="Enter your delivery address"-->
+            <!--[(ngModel)]='quote.dimensions' name="dimensions">-->
+            </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Length" [(ngModel)]='quote.length' name="length">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Width" [(ngModel)]='quote.width' name="width">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Height" [(ngModel)]='quote.height' name="height">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Weight" [(ngModel)]='quote.weight' name="weight">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label">Temperature Cool</label>
+                <div class="ck-box">
+                  <div class="checkbox-block">
+                    <label class="ck-content"> Yes
+                      <input type="radio" name="temperature_control" [(ngModel)]="quote.temperature_control" value="y">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="checkbox-block">
+                    <label class="ck-content"> No
+                      <input type="radio" name="temperature_control" [(ngModel)]="quote.temperature_control" value="n">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="form-label">Bill To?</label>
+                <input type="text" class="form-control"
+                       [(ngModel)]='quote.bill_to' name="bill_to">
+                <!--<select class="form-control select-btn" [(ngModel)]='quote.bill_to' name="bill_to">-->
+                <!--<option>Select</option>-->
+                <!--</select>-->
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label class="form-label">Any Other Information?</label>
+                <input type="text" class="form-control" placeholder="Enter the information here…"
+                       [(ngModel)]='quote.additional_info' name="additional_info">
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label class="form-label">Preferred Contact Method</label>
+                <div class="ck-box">
+                  <div class="checkbox-block">
+                    <label class="ck-content"> Phone
+                      <input type="radio" checked="checked" name="preferred_contact" [(ngModel)]='quote.preferred_contact' value="phone">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="checkbox-block">
+                    <label class="ck-content"> E-mail
+                      <input type="radio" name="preferred_contact" [(ngModel)]='quote.preferred_contact' value="email">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                  <div class="checkbox-block">
+                    <label class="ck-content"> Both
+                      <input type="radio" name="preferred_contact" [(ngModel)]='quote.preferred_contact' value="both">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label class="form-label">Comments</label>
+                <input type="text" class="form-control" placeholder="Type comments here ...." [(ngModel)]='quote.comments'
+                       name="comments">
+              </div>
+            </div>
+
+
+          </div>
+          <button type="submit" class="contact-send-btn" (click)="getData()">Get a Quote</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div *ngIf="successQuote">
+  <section class="form-submitted successfully.">
+    <div class="container">
+      <div class="form-submitted-icon">
+        <i></i>
+      </div>
+      <div class="form-submitted-content">
+        <h4>Form submitted successfully.</h4>
+        <p>We typically reply to 90% of the queries within 1 hour. We’ll get back to you soon.</p>
+        <a href="index.html" class="home-btn">Go to homepage</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+<footer></footer>
